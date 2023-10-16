@@ -12,10 +12,10 @@ const styles = StyleSheet.create({
   title:{
     fontSize: 25,
     fontWeight: 'bold',
-    color: '#ffd700',
+    color: 'white',
     textAlign: 'center',
     borderWidth: 2,
-    borderColor: '#ffd700',
+    borderColor: 'white',
     padding: 12,
   }
 })
