@@ -1,6 +1,7 @@
 import {TextInput, Text, Pressable, View, StyleSheet, Alert} from 'react-native'
 import PrimaryButton from '../components/PrimaryButton'
 import { useState } from 'react'
+import Title from '../components/Title'
 
 const StartGameScreen = ({onConfirmNumber}) => {
     const [inputNumber, setInputNumber] = useState('')
@@ -19,8 +20,10 @@ const StartGameScreen = ({onConfirmNumber}) => {
     }
 
   return (
-    <>
+    <View style={styles.rootContainer}>
+        <Title>Guess My Number</Title>
     <View style={styles.inputContainer}>
+        <Text style={styles.instructionText}>Enter a number</Text>
         <TextInput value={inputNumber} style={styles.textInput} maxLength={2} keyboardType='number-pad' autoCapitalize='none' autoCorrect= {false} onChangeText={handleOnNumberChange} />
         <View style={styles.btnGroup}>
             <View style={styles.btnContainer}>
@@ -31,13 +34,23 @@ const StartGameScreen = ({onConfirmNumber}) => {
             </View>
         </View>
     </View>
-    </>
+    </View>
   )
 }
 
 export default StartGameScreen
 
 const styles = StyleSheet.create({
+    rootContainer:{
+        flex: 1,
+        marginTop: 80,
+        alignItems: 'center',
+    },
+
+    instructionText:{
+        color: 'white',
+        fontSize: 24,
+    },
     inputContainer:{
         padding: 16,
         marginTop: 50,
