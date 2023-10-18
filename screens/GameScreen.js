@@ -3,6 +3,7 @@ import Title from "../components/Title"
 import { useEffect, useState } from "react"
 import NumberContainer from "../components/NumberContainer"
 import PrimaryButton from "../components/PrimaryButton"
+import { MaterialIcons, SimpleLineIcons } from '@expo/vector-icons';
 
 function generateRandomBetween(min, max, exclude) {
     const randomNumber = Math.floor(Math.random()* (max-min))+ min
@@ -50,8 +51,12 @@ const GameScreen = ({userNumber, onGameOver}) => {
      </NumberContainer>
       <View>
         <View style={styles.btnContainer}>
-        <PrimaryButton style={styles.btn} onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
-        <PrimaryButton onPress={nextGuessHandler.bind(this, 'higher')}>+</PrimaryButton>
+        <PrimaryButton style={styles.btn} onPress={nextGuessHandler.bind(this, 'lower')}>
+          <SimpleLineIcons name="minus" size={30} color="white" />
+        </PrimaryButton>
+        <PrimaryButton onPress={nextGuessHandler.bind(this, 'higher')}>
+          <MaterialIcons name="add-circle-outline" size={30} color="white" />
+        </PrimaryButton>
         </View>
       </View>
       <View>
