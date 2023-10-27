@@ -50,6 +50,8 @@ const styles = StyleSheet.create({
     instructionText:{
         color: 'white',
         fontSize: 24,
+        fontFamily:'open-sans',
+
     },
     inputContainer:{
         padding: 16,
