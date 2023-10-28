@@ -10,6 +10,8 @@ import {useFonts} from 'expo-font'
 export default function App() {
   const [userNumber, setUserNumber]= useState()
   const [gameOver, setGameOver]= useState(true)
+  const[guessedRounds, setGuessedRounds] = useState(0)
+  
 
  const [fontsLoaded] =  useFonts({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -24,8 +26,16 @@ export default function App() {
     return <Text>Loading</Text>
   }
 
-  function gameOverHandler(){
+  function gameOverHandler(numberOfRounds){
     setGameOver(true)
+    setGuessedRounds(numberOfRounds)
+  }
+
+  function startNewGameHandler(){
+    setGuessedRounds(0)
+    setUserNumber(null)
+
+
   }
 
   let screen = <StartGameScreen onConfirmNumber= {pickedNumberHandler}/>
@@ -34,7 +44,7 @@ export default function App() {
   } 
 
   if(gameOver && userNumber){
-    screen = <GameOverScreen/>
+    screen = <GameOverScreen userNumber={userNumber} roundsNumber={guessedRounds} onStartNewGame={startNewGameHandler}/>
   }
 
   return (
