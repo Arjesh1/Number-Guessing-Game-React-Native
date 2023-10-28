@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Alert, FlatList  } from "react-native"
+import { View, Text, StyleSheet, Alert, FlatList, Dimensions  } from "react-native"
 import Title from "../components/Title"
 import { useEffect, useState } from "react"
 import NumberContainer from "../components/NumberContainer"
@@ -86,10 +86,14 @@ const GameScreen = ({userNumber, onGameOver}) => {
 
 export default GameScreen
 
+const deviceWidth = Dimensions.get('window').width
+console.log(deviceWidth)
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 20,
+    padding:  deviceWidth < 380 ? 15: 20,
+    alignItems: 'center'
   },
 
   btnContainer:{
@@ -99,7 +103,7 @@ const styles = StyleSheet.create({
   },
   listContainer:{
     flex: 1,
-    padding: 16
+    padding: deviceWidth < 380 ? 12 : 16
   },
   
 })

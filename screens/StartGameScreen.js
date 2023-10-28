@@ -1,10 +1,12 @@
-import {TextInput, Text, Pressable, View, StyleSheet, Alert} from 'react-native'
+import {TextInput, Text, View, StyleSheet, Alert, useWindowDimensions} from 'react-native'
 import PrimaryButton from '../components/PrimaryButton'
 import { useState } from 'react'
 import Title from '../components/Title'
 
 const StartGameScreen = ({onConfirmNumber}) => {
     const [inputNumber, setInputNumber] = useState('')
+    const {width, height} = useWindowDimensions()
+    console.log(width, "===", height)
 
     handleOnNumberChange = (enteredValue) =>{
         setInputNumber(enteredValue)

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ImageBackground, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, ImageBackground, SafeAreaView, Text, Dimensions } from 'react-native';
 import StartGameScreen from './screens/StartGameScreen';
 import {LinearGradient} from 'expo-linear-gradient'
 import { useState } from 'react';
@@ -34,8 +34,6 @@ export default function App() {
   function startNewGameHandler(){
     setGuessedRounds(0)
     setUserNumber(null)
-
-
   }
 
   let screen = <StartGameScreen onConfirmNumber= {pickedNumberHandler}/>
@@ -60,6 +58,8 @@ export default function App() {
     </>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   rootScreen: {

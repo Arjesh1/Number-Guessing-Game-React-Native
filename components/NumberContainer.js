@@ -17,11 +17,12 @@ const styles = StyleSheet.create({
     container:{
         borderWidth: 4,
         borderColor: 'yellow',
-        padding: 24,
+        padding: 16,
         borderRadius: 8,
         margin: 24,
         alignItems: 'center',
         justifyContent: 'center',
+        width: '80%'
 
     },
     numberText:{
