@@ -47,6 +47,7 @@ export default function App() {
 
   return (
     <>
+    <StatusBar style="light" />
     <LinearGradient colors={['#4169e1', '#ffd700' ]}style={styles.rootScreen}>
       <ImageBackground source={require('./assets/images/dices.jpg')} resizeMode='cover' style={styles.rootScreen} imageStyle={styles.backgroundImage}>
       <SafeAreaView style={styles.rootScreen}>
@@ -54,7 +55,7 @@ export default function App() {
       </SafeAreaView>
       </ImageBackground>
     </LinearGradient>
-      <StatusBar style="light" />
+      
     </>
   );
 }
