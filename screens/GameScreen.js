@@ -89,11 +89,7 @@ const GameScreen = ({userNumber, onGameOver}) => {
      <PrimaryButton onPress={nextGuessHandler.bind(this, 'higher')}>
           <MaterialIcons name="add-circle-outline" size={30} color="white" />
         </PrimaryButton>
-
-
       </View>
-
-      
       </>
     )
   }
@@ -116,7 +112,6 @@ const GameScreen = ({userNumber, onGameOver}) => {
 export default GameScreen
 
 const deviceWidth = Dimensions.get('window').width
-console.log(deviceWidth)
 
 const styles = StyleSheet.create({
   screen: {
