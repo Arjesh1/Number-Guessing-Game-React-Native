@@ -1,10 +1,11 @@
-import { Image, Text, View, StyleSheet, Dimensions } from "react-native"
+import { Image, Text, View, StyleSheet, Dimensions, ScrollView } from "react-native"
 import Title from '../components/Title'
 import PrimaryButton from "../components/PrimaryButton"
 
 
 const GameOverScreen = ({roundsNumber, userNumber, onStartNewGame}) => {
   return (
+    <ScrollView style={{flex:1}}>
     <View style={styles.gameOverContainer}>
       <Title>GAME OVER!</Title>
       <View style={styles.imgContainer}>
@@ -14,8 +15,8 @@ const GameOverScreen = ({roundsNumber, userNumber, onStartNewGame}) => {
         Your phone needed <Text style={styles.highlightText}>{roundsNumber}</Text> rounds to guess the number <Text style={styles.highlightText}>{userNumber}</Text>.
       </Text>
       <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
-
     </View>
+    </ScrollView>
   )
 }
 const deviceWidth = Dimensions.get('window').width

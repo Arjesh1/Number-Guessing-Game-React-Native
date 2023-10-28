@@ -1,4 +1,4 @@
-import {TextInput, Text, View, StyleSheet, Alert, useWindowDimensions} from 'react-native'
+import {TextInput, Text, View, StyleSheet, Alert, useWindowDimensions, KeyboardAvoidingView, ScrollView} from 'react-native'
 import PrimaryButton from '../components/PrimaryButton'
 import { useState } from 'react'
 import Title from '../components/Title'
@@ -6,7 +6,6 @@ import Title from '../components/Title'
 const StartGameScreen = ({onConfirmNumber}) => {
     const [inputNumber, setInputNumber] = useState('')
     const {width, height} = useWindowDimensions()
-    console.log(width, "===", height)
 
     handleOnNumberChange = (enteredValue) =>{
         setInputNumber(enteredValue)
@@ -21,10 +20,14 @@ const StartGameScreen = ({onConfirmNumber}) => {
         onConfirmNumber(chosenNumber);
     }
 
+    const margnTopDistance =  height < 420 ? 15 : 80
+    
   return (
-    <View style={styles.rootContainer}>
+    <ScrollView style={{flex:1}}>
+    <KeyboardAvoidingView style={{flex:1}} behavior='position'>
+    <View style={[styles.rootContainer, {marginTop: margnTopDistance}]}>
         <Title>Guess My Number</Title>
-    <View style={styles.inputContainer}>
+      <View style={styles.inputContainer}>
         <Text style={styles.instructionText}>Enter a number</Text>
         <TextInput value={inputNumber} style={styles.textInput} maxLength={2} keyboardType='number-pad' autoCapitalize='none' autoCorrect= {false} onChangeText={handleOnNumberChange} />
         <View style={styles.btnGroup}>
@@ -35,8 +38,10 @@ const StartGameScreen = ({onConfirmNumber}) => {
                 <PrimaryButton onPress={handleOnNumberConfirm} >Confirm</PrimaryButton>
             </View>
         </View>
+      </View>
     </View>
-    </View>
+    </KeyboardAvoidingView>
+    </ScrollView>
   )
 }
 
@@ -45,7 +50,6 @@ export default StartGameScreen
 const styles = StyleSheet.create({
     rootContainer:{
         flex: 1,
-        marginTop: 80,
         alignItems: 'center',
     },
 

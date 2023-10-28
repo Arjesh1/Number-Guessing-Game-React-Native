@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Alert, FlatList, Dimensions  } from "react-native"
+import { View, Text, StyleSheet, Alert, FlatList, useWindowDimensions, Dimensions  } from "react-native"
 import Title from "../components/Title"
 import { useEffect, useState } from "react"
 import NumberContainer from "../components/NumberContainer"
@@ -21,6 +21,7 @@ const GameScreen = ({userNumber, onGameOver}) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber)
   const [currentGuess, setCurrentGuess] = useState(initialGuess)
   const[guessedRounds, setGuessedRound] = useState([initialGuess])
+  const {width, height} = useWindowDimensions()
 
   useEffect(()=>{
     if(currentGuess === userNumber){
@@ -57,10 +58,8 @@ const GameScreen = ({userNumber, onGameOver}) => {
 
   const guessedRoundsListLength = guessedRounds.length
 
-  return (
+  let content = (
     <>
-    <View style={styles.screen}>
-     <Title>Opponent's Guess</Title>
      <NumberContainer>
       {currentGuess}
      </NumberContainer>
@@ -74,6 +73,36 @@ const GameScreen = ({userNumber, onGameOver}) => {
         </PrimaryButton>
         </View>
       </View>
+    </>
+  )
+
+  if(width > 500){
+    content = (
+      <>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <PrimaryButton style={styles.btn} onPress={nextGuessHandler.bind(this, 'lower')}>
+          <SimpleLineIcons name="minus" size={30} color="white" />
+        </PrimaryButton>
+        <NumberContainer>
+      {currentGuess}
+     </NumberContainer>
+     <PrimaryButton onPress={nextGuessHandler.bind(this, 'higher')}>
+          <MaterialIcons name="add-circle-outline" size={30} color="white" />
+        </PrimaryButton>
+
+
+      </View>
+
+      
+      </>
+    )
+  }
+
+  return (
+    <>
+    <View style={styles.screen}>
+     <Title>Opponent's Guess</Title>
+     {content}
       <View style={styles.listContainer}>
         {/* {guessedRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)} */}
         <FlatList data={guessedRounds} keyExtractor={(item)=> item} renderItem={(itemData)=><GuessLogItem roundNumber={guessedRoundsListLength - itemData.index } guess={itemData.item}/>}>
